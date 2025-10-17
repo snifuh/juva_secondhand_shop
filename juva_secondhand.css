@@ -1,0 +1,393 @@
+/* Reset and basic styling */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+
+main {
+  flex: 1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+/* Header styling */
+header {
+  display: flex;
+  justify-content: center; /* Center the logo */
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #cecece;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.logo img {
+  height: 50px;
+  object-fit: contain;
+  display: block;
+}
+
+
+.cart-button {
+  background-color: #1e4821;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  width: 100px;
+}
+
+.cart-button:hover {
+  background-color: #0056b3;
+}
+
+/* Optional placeholder for left side (could be empty) */
+.header-left {
+  width: 100px; /* just to balance flex */
+}
+
+/* Main content padding */
+main {
+  padding: 30px;
+}
+
+.site-info {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600; /* Semi-bold weight for emphasis */
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #f0f0f0; /* Subtle background to separate from header */
+  color: #333;
+}
+
+.site-info h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.site-info p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Products title */
+.products-title {
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.6em;
+  color: #333;
+}
+
+/* Footer styling */
+footer {
+  background-color: #1e4821;
+  color: #bbb;
+  text-align: center;
+  padding: 10px 20px;       /* smaller padding top/bottom */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.75em;        /* small text */
+  line-height: 1.2em;       /* tight line spacing */
+}
+
+
+footer p {
+  margin: 2px 0;            /* minimal space between lines */
+}
+
+footer::before {
+  content: "";
+  display: block;
+  width: 60px;
+  margin: 0 auto 15px auto;
+  border-top: 1px solid #555; /* subtle separator */
+}
+
+footer a {
+  color: #bbb; /* match text color */
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+.products-title {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 1.8em;
+  color: #222;
+}
+
+.search-container {
+  text-align: center;
+  margin: 15px 0 30px;
+}
+
+#productSearch {
+  width: 60%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+#productSearch:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 100px;           /* slightly larger gap */
+  padding: 0 20px 40px;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 220px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.product-card img {
+  width: 100%; /* fills card width */
+  height: auto;
+  border-radius: 6px;
+}
+
+.product-card h3 {
+  font-size: 1em;
+  margin-top: 6px;
+  color: #333;
+  line-height: 1.3em;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+
+/* Keep cart button fixed in the middle of header */
+.cart-button {
+  position: fixed;
+  top: 20px; /* adjust to middle of header */
+  right: 20px;
+  z-index: 200; /* above header */
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Dropdown positioned relative to the button */
+#cartDropdown {
+  display: none; /* initially hidden */
+  position: fixed; /* fixed to viewport */
+  top: 70px; /* a bit below the cart button for a gap */
+  right: 20px; /* align with cart button */
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 1001; /* above header */
+}
+
+#cartDropdown h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+#cartDropdown button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #1e4821;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#cartDropdown button:hover {
+  background-color: #1e4821;
+}
+
+
+#searchInput {
+  width: 600px;        
+  max-width: 90%;      
+  padding: 10px;
+  margin: 20px auto 40px auto;  /* top 20px, bottom 40px */
+  font-size: 16px;
+  display: block;      
+  border-radius: 5px;  
+  border: 1px solid #ccc;
+}
+
+.cart-box ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0;
+}
+
+.cart-box li {
+  margin-bottom: 5px;
+}
+
+.order-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Product Card Buttons */
+.product-card button.add-to-cart {
+  display: block;
+  margin: 10px auto 0;
+  padding: 8px 14px;
+  background-color: #1e4821;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.product-card button.add-to-cart:hover {
+  background-color: #3aa394; /* slightly lighter on hover */
+  transform: translateY(-1px);
+}
+
+.product-card button.add-to-cart:active {
+  transform: translateY(1px);
+  background-color: #256e6a;
+}
+
+
+.place-order-btn {
+  display: block;
+  margin: 10px auto 0;
+  padding: 8px 14px;
+  background-color: #1e4821;
+  color: white;
+  font-size: 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+  .checkout-form {
+    max-width: 500px; /* limits the form width */
+    margin: 0 auto;   /* centers the form */
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px; /* gap between each field */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group label {
+    margin-bottom: 5px; /* small gap between label and input */
+    font-weight: bold;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  textarea {
+    resize: vertical; /* allows the user to resize vertically */
+  }
+
+  .place-order-btn:hover {
+    background-color: #45a049; /* darker green on hover */
+  }
+
+  .cart-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers all children horizontally */
+  margin-bottom: 20px;
+}
+
+.cart-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 450px; /* same as your input fields */
+  height: 200px; /* taller to see multiple items */
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.cart-box div {
+  margin-bottom: 5px;
+}
+
+
+
+/* Highlight animation */
+@keyframes highlightFlash {
+  0% { box-shadow: 0 0 0px #007bff; }
+  50% { box-shadow: 0 0 25px #007bff; }
+  100% { box-shadow: 0 0 0px #007bff; }
+}
+
+.highlighted {
+  animation: highlightFlash 1.5s ease;
+}
+
+
+

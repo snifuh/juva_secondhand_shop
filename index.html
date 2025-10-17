@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juva Secondhand Store</title>
+    <link rel="stylesheet" href="juva_secondhand.css">
+</head>
+<body>
+
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+<header>
+  <div class="logo">
+    <img src="jutavit_logo-820x298.png" alt="Brand Logo">
+  </div>
+  <button class="cart-button">Cart 🛒</button>
+</header>
+
+<div id="cartDropdown" style="display: none;">
+  <h3>Your Cart:</h3>
+  <div id="cartItems"></div>
+  <button id="orderButton">Order</button>
+</div>
+
+<section class="site-info">
+  <h2>Official Distributor – Exclusive 20% Off</h2>
+  <p>Get your products at discounted prices at all times. Simple, fast, and reliable order processing.</p>
+</section>
+
+<h2 class="products-title">Products:</h2>
+<input type="text" id="searchInput" placeholder="Search products...">
+<section class="product-grid"></section>
+
+
+<section class="product-grid">
+  <div class="product-card">
+    <img src="product_images/Collagen-Hialuron-Matrix-500ml-Malna-Eper-e1758704882806-247x296.jpg" alt="Collagen Raspberry">
+    <h3>Collagen Raspberry</h3>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="product_images/Collagen-Hialuron-Matrix-500ml-Afonya-Meggy-e1758704967254-247x296.jpg" alt="Collagen Cherry">
+    <h3>Collagen Cherry</h3>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="product_images/Collagen-Hialuron-Matrix-500ml-Barack-e1758704993299-247x296.jpg" alt="Collagen Peach">
+    <h3>Collagen Peach</h3>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <!-- Add more product cards here -->
+</section>
+<!---
+<script>
+(function() {
+  const cartButton = document.querySelector(".cart-button");
+  const cartDropdown = document.getElementById("cartDropdown");
+  const cart = [];
+
+  function renderCart() {
+  const cartItemsDiv = document.getElementById("cartItems");
+  const orderButton = document.getElementById("orderButton");
+  cartItemsDiv.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartItemsDiv.textContent = "Your cart is empty.";
+    orderButton.style.display = "none";
+    return;
+  }
+
+  cart.forEach((item) => {
+    const div = document.createElement("div");
+    div.textContent = `${item.name} x${item.quantity}`;
+    cartItemsDiv.appendChild(div);
+  });
+
+  orderButton.style.display = "block";
+}
+
+const orderButton = document.getElementById("orderButton");
+if (orderButton) {
+  orderButton.addEventListener("click", () => {
+    localStorage.setItem("cartData", JSON.stringify(cart)); 
+    console.log("Cart data saved to localStorage:", cart); 
+    window.location.href = "checkout.html"; 
+  });
+}
+
+  
+  cartButton.addEventListener("click", () => {
+  const isVisible = window.getComputedStyle(cartDropdown).display !== "none";
+  cartDropdown.style.display = isVisible ? "none" : "block";
+
+  if (!isVisible) renderCart();
+});
+
+  const productGrid = document.querySelector(".product-grid");
+
+  const products = [
+    { file: "product_images/Collagen-Hialuron-Matrix-500ml-Malna-Eper-e1758704882806-247x296.jpg", name: "Collagen Raspberry" },
+{ file: "product_images/Collagen-Hialuron-Matrix-500ml-Afonya-Meggy-e1758704967254-247x296.jpg", name: "Collagen Cherry" },
+{ file: "product_images/Collagen-Hialuron-Matrix-500ml-Barack-e1758704993299-247x296.jpg", name: "Collagen Peach" },
+{ file: "product_images/Florabione_20x_3D-247x296.jpg", name: "Florabione" },
+{ file: "product_images/Herbal_Lolly_62_3D-247x296.jpg", name: "Herbal Lolly" },
+{ file: "product_images/chorela-doboz-247x296.jpg", name: "Chlorella" },
+{ file: "product_images/spirulina-doboz-247x296.jpg", name: "Spirulina" },
+{ file: "product_images/CollagenHialuronKomplex_Csokolade_400g_3D-e1747821009597-247x296.jpg", name: "Collagen Chocolate" },
+{ file: "product_images/solar-50-kids-247x296.jpg", name: "Solar 50 Kids" },
+{ file: "product_images/solar-50-247x296.jpg", name: "Solar 50" },
+{ file: "product_images/solar-30-247x296.jpg", name: "Solar 30" },
+{ file: "product_images/Mg_B6_D3_120x_HU-2025-247x296.jpg", name: "Magnesium B6 D3" },
+{ file: "product_images/Ashwagandha_300mg_2025_LEFT-247x296.jpg", name: "Ashwagandha 300mg" },
+{ file: "product_images/1-e1740757655273-247x296.jpg", name: "Collagen Hialuron" },
+{ file: "product_images/Collagen-Hialuron-Izulet-400g-Erdei-Gyumolcs-e1740757573513-247x296.jpg", name: "Collagen Forest Fruit" },
+{ file: "product_images/Collagen-Hialuron-Izulet-400g-Narancs-Grapefruit-e1740757104599-247x296.jpg", name: "Collagen Orange Grapefruit" },
+{ file: "product_images/B6-vitamin_12mg_100x_3D_LEFT-247x296.jpg", name: "B6 Vitamin 12mg" },
+{ file: "product_images/jutavit-foginy-komplex-100db_3aywxmx1-247x296.jpg", name: "Gum Complex" },
+{ file: "product_images/Vita_Pingvin_Cukormentes-247x296.jpg", name: "Vita Penguin Sugar-Free" },
+{ file: "product_images/Vita_Pingvin_Cukros-247x296.jpg", name: "Vita Penguin Sugary" },
+{ file: "product_images/Vita_Dino_Cukormentes-247x296.jpg", name: "Vita Dino Sugar-Free" },
+{ file: "product_images/Vita_Dino_Cukros-247x296.jpg", name: "Vita Dino Sugary" },
+{ file: "product_images/Digitalis_lazmero-247x296.jpg", name: "Digital Thermometer" },
+{ file: "product_images/DropOne_tesztcsik-247x296.jpg", name: "DropOne Test Strip" },
+{ file: "product_images/Hagyomanyos_Higanymentes_lazmero-247x296.jpg", name: "Traditional Mercury-Free Thermometer" },
+{ file: "product_images/Werner_vernyomasmero-247x296.jpg", name: "Werner Blood Pressure Monitor" },
+{ file: "product_images/lazmero-homlok-infravoros-erintmentes-jutavit-247x296.jpg", name: "Infrared Forehead Thermometer" },
+{ file: "product_images/CalciMax-Forte-247x296.jpg", name: "CalciMax Forte" },
+{ file: "product_images/TEA_csipkebogyo-247x296.jpg", name: "Rosehip Tea" },
+{ file: "product_images/Dermexema_30ml_doboz_3D-247x296.jpg", name: "Dermexema Cream" },
+{ file: "product_images/D-Mannose_500mg_tabletta_90x_LEFT-247x296.jpg", name: "D-Mannose 500mg" },
+{ file: "product_images/TEA_harsfavirag-247x296.jpg", name: "Linden Flower Tea" },
+{ file: "product_images/TEA_kamillavirag-247x296.jpg", name: "Chamomile Tea" },
+{ file: "product_images/Koromgomba_kezelo_Toll_LEFT-247x296.jpg", name: "Nail Fungus Treatment Pen" },
+{ file: "product_images/LandzsasUtifu_150ml_cukormentes_3D-247x296.jpg", name: "Sugar-Free Plantain Syrup" },
+{ file: "product_images/Lecithin_1200mg_100x_TNY_3D-247x296.jpg", name: "Lecithin 1200mg" },
+{ file: "product_images/Mio-inozitol_200g_por2-247x296.jpg", name: "Myo-Inositol Powder" },
+{ file: "product_images/Mio-inozitol_kapszula_100x_LEFT-247x296.jpg", name: "Myo-Inositol Capsules" },
+{ file: "product_images/OMEGA-3_1000mg_110x_TNY-247x296.jpg", name: "Omega-3 1000mg" },
+{ file: "product_images/Propolisz_30ml_3d_2-247x296.jpg", name: "Propolis Drops" },
+{ file: "product_images/Szem_Lutein_Pro_40mg_90x_LEFT_HU-247x296.jpg", name: "Eye Lutein Pro 40mg (90x)" },
+{ file: "product_images/Szem_Lutein_Pro_40mg_60x_LEFT_HU-247x296.jpg", name: "Eye Lutein Pro 40mg (60x)" },
+{ file: "product_images/TEA_tozegafonya-247x296.jpg", name: "Cranberry Tea" },
+{ file: "product_images/JutaVit_LucoVitaal_Szemolcs_irto_LEFT-247x296.jpg", name: "Wart Remover" },
+{ file: "product_images/TEA_Zold_citrom_25x-247x296.jpg", name: "Green Lemon Tea" },
+{ file: "product_images/Diet-Shake_Csokolade_3D-247x296.jpg", name: "Diet Shake Chocolate" },
+{ file: "product_images/Diet-Shake_Vanilia_3D-1-247x296.jpg", name: "Diet Shake Vanilla" },
+{ file: "product_images/Diet-Shake_Eper_3D-247x296.jpg", name: "Diet Shake Strawberry" },
+{ file: "product_images/Herbal-Hot-Drink12x_KIDS_left_3D-2048x2048-1-247x296.jpg", name: "Herbal Hot Drink Kids" },
+{ file: "product_images/Herbal_Hot_Drink_24x_left_3D_red-2048x1486-1-247x296.jpg", name: "Herbal Hot Drink (24x)" },
+{ file: "product_images/Herbal_Hot_Drink_12x_left_3D_red-2048x2048-1-247x296.jpg", name: "Herbal Hot Drink (12x)" },
+{ file: "product_images/Emesztoenzim_30x_3D_LEFT-247x296.jpg", name: "Digestive Enzyme" },
+{ file: "product_images/Kakukkfu_szirup_150ml-1-247x296.jpg", name: "Thyme Syrup" },
+{ file: "product_images/Multivitamin_Immuner_WomenSpecial_100x_HU_LEFT-247x296.jpg", name: "Multivitamin Women Special (100x)" },
+{ file: "product_images/Multivitamin_Immuner_WomenSpecial_45x_HU_LEFT-247x296.jpg", name: "Multivitamin Women Special (45x)" },
+{ file: "product_images/Valeriana_100mg_50x_LEFT_HU-247x296.jpg", name: "Valeriana 100mg" },
+{ file: "product_images/Magnezium-Biszglicinat_100x_LEFT_HU-247x296.jpg", name: "Magnesium Bisglycinate" },
+{ file: "product_images/Hialuron-forte_200mg_30x_LEFT_HU-247x296.jpg", name: "Hyaluron Forte 200mg" },
+{ file: "product_images/jutavitszulfat.jpg-247x296.jpg", name: "Jutavit Sulfate" },
+{ file: "product_images/Gumivitamin_CalciumD3_gummy_50x-247x296.jpg", name: "Calcium D3 Gummies" },
+{ file: "product_images/Collagen_Exclusive_gummy_60x-247x296.jpg", name: "Collagen Exclusive Gummies" },
+{ file: "product_images/JutaVit-Hair-Exclusive_LEFT-247x296.jpg", name: "Hair Exclusive" },
+{ file: "product_images/D3_csepp_30ml_3D-247x296.jpg", name: "D3 Drops 30ml" },
+{ file: "product_images/Gumivitamin_C-vitamin_CUKORMENTES_60x_banan_ujEzust_3D_v2023-2048x2048-1-247x296.jpg", name: "Sugar-Free Vitamin C Gummies" },
+{ file: "product_images/Szerves-Magnezium-Italpor_sachet-247x296.jpg", name: "Magnesium Drink Powder" },
+{ file: "product_images/JutaVit-Gumivitamin-MultiCUKORMENTES_50x-247x296.jpg", name: "Sugar-Free Multivitamin Gummies" },
+{ file: "product_images/D3_2000NE_oliva_100x-300x300-1-247x296.jpg", name: "D3 2000NE Olive Oil" },
+{ file: "product_images/JutaVit-Omega-3-cardiovascular_60x_EK-300x300-1-247x296.jpg", name: "Omega-3 Cardiovascular" },
+{ file: "product_images/JutaVit-B-complex_softgel-247x296.jpg", name: "B-Complex Softgel" },
+{ file: "product_images/JutaVit_Magnezium-375mgB6_60x-300x300-1-247x296.jpg", name: "Magnesium 375mg + B6" },
+{ file: "product_images/IzlandiZuzmo_A43mm_press-1-300x300-1-247x296.jpg", name: "Iceland Moss Lozenges" },
+{ file: "product_images/JutaVit-Glukozamin-szulfatChondroitin-szulfat_MSM_UJ_60x-300x300-1-247x296.jpg", name: "Glucosamine Chondroitin MSM (60x)" },
+{ file: "product_images/JutaVit-DiozminHeszperidin_120x-1-300x300-1-247x296.jpg", name: "Diosmin Hesperidin (120x)" },
+{ file: "product_images/D3-vitamin_800NE_60x_3D_left-300x300-1-247x296.jpg", name: "D3 Vitamin 800NE" },
+{ file: "product_images/Collegan_Vegan_216g_narancs-maracuja_3D-300x300-1-247x296.jpg", name: "Vegan Collagen Orange Passionfruit" },
+{ file: "product_images/Collegan_Vegan_216g_berry_3D-300x300-1-247x296.jpg", name: "Vegan Collagen Berry" },
+{ file: "product_images/Collagen_Hal_HialuronKomplex_200g_malna_3D-300x300-1-247x296.jpg", name: "Fish Collagen Raspberry" },
+{ file: "product_images/C_200_RAGO_100x_ujEzust_3D-2048x2048-1-247x296.jpg", name: "Chewable Vitamin C 200mg" },
+{ file: "product_images/JutaVit-Biotin-B7-vitamin_100x-300x300-1-247x296.jpg", name: "Biotin B7 Vitamin" },
+{ file: "product_images/Collagen_Natural_300g_Natur_3Djpg-300x300-1-247x296.jpg", name: "Natural Collagen 300g" },
+{ file: "product_images/ES7_60x_3D-300x300-1-247x296.jpg", name: "ES7 (60x)" },
+{ file: "product_images/ES7_30x_3D-300x300-1-247x296.jpg", name: "ES7 (30x)" },
+{ file: "product_images/JutaVit_Szerves_Kalcium_350mgD3_60x_3D-300x300-1-247x296.jpg", name: "Organic Calcium 350mg + D3" },
+{ file: "product_images/JutaVit-Probium-KID-247x296.jpg", name: "Probium KID" },
+{ file: "product_images/C-Vitamin_1000_BASIC_100x_HU-247x296.jpg", name: "Basic Vitamin C 1000mg" },
+{ file: "product_images/JutaVit-C-vitamin-1000mg_-CD-Duo-Plus100x-300x300-1-247x296.jpg", name: "Vitamin C 1000mg CD Duo Plus" },
+{ file: "product_images/JutaVit-Krill-olaj-625mg_60x-1-247x296.jpg", name: "Krill Oil 625mg" },
+{ file: "product_images/CollagenHialuronKomplex_ErdeiGyumolcs_400g-300x300-1-247x296.jpg", name: "Collagen Forest Fruit 400g" },
+{ file: "product_images/CollagenHialuronKomplex_Ananasz_400g-300x300-1-247x296.jpg", name: "Collagen Pineapple 400g" },
+{ file: "product_images/CollagenHialuronKomplex_Eper_400g-300x300-1-247x296.jpg", name: "Collagen Strawberry 400g" },
+{ file: "product_images/JutaVit-D3_4000IU_100x-300x300-1-247x296.jpg", name: "D3 4000IU (100x)" },
+{ file: "product_images/D3_2000NE_100x-300x300-1-247x296.jpg", name: "D3 2000NE (100x)" },
+{ file: "product_images/D3_4000NE_Forte_oliva_100x-300x300-1-247x296.jpg", name: "D3 4000NE Forte Olive" },
+{ file: "product_images/JutaVit-Glukozamin-szulfatChondroitin-szulfat_MSM_UJ_120x-300x300-1-247x296.jpg", name: "Glucosamine Chondroitin MSM (120x)" },
+{ file: "product_images/D3-Vitamin_CSEPP_gyerek_400NE_30ml_left-247x296.jpg", name: "D3 Drops for Kids 400NE" },
+{ file: "product_images/JutaVit-Laktaz-enzim_6500FFCU_60x-300x300-1-247x296.jpg", name: "Lactase Enzyme 6500FFCU" },
+{ file: "product_images/JutaVit-Szem-lutein-60x-1-247x296.jpg", name: "Eye Lutein (60x)" },
+{ file: "product_images/JutaVit_Probium_7inulin_30x-300x300-1-247x296.jpg", name: "Probium 7 Inulin (30x)" },
+{ file: "product_images/JutaVit_Probium_7inulin_15x-300x300-1-247x296.jpg", name: "Probium 7 Inulin (15x)" },
+{ file: "product_images/D3_3000NE_oliva_40x-300x300-1-247x296.jpg", name: "D3 3000NE Olive (40x)" },
+{ file: "product_images/D3_3000NE_oliva_100x-300x300-1-247x296.jpg", name: "D3 3000NE Olive (100x)" },
+{ file: "product_images/D3_2000NE_40x-300x300-1-247x296.jpg", name: "D3 2000NE (40x)" },
+{ file: "product_images/C_1000_RAGO_60x_ujEzust_3D-2048x2048-1-247x296.jpg", name: "Chewable Vitamin C 1000mg (60x)" },
+{ file: "product_images/JutaVit-A-Vitamin_50x-300x300-1-247x296.jpg", name: "Vitamin A (50x)" },
+{ file: "product_images/JutaVit-Calcium_500mgD3_50x-300x300-1-247x296.jpg", name: "Calcium 500mg + D3 (50x)" },
+{ file: "product_images/JutaVit-Tozegafonya-Szirup_150ml-300x300-1-247x296.jpg", name: "Cranberry Syrup 150ml" },
+{ file: "product_images/JutaVit_Szerves-Vas_Szirup_150ml-300x300-1-247x296.jpg", name: "Organic Iron Syrup 150ml" },
+{ file: "product_images/JutaVit-Omega-3-1200mg_40x-300x300-1-247x296.jpg", name: "Omega-3 1200mg (40x)" },
+{ file: "product_images/eyeclinic_szemcsepp_szaraz_szemre_10ml-300x300-1-247x296.jpg", name: "EyeClinic Dry Eye Drops 10ml" },
+{ file: "product_images/eyeclinic_szemcsepp_irritalt_szemre_10ml-300x300-1-247x296.jpg", name: "EyeClinic Irritated Eye Drops 10ml" },
+{ file: "product_images/JutaVit_E-vitamin_400IU_100x-300x300-1-247x296.jpg", name: "Vitamin E 400IU (100x)" },
+{ file: "product_images/JutaVit-Szerves-Vas_100x-1-300x300-1-247x296.jpg", name: "Organic Iron (100x)" },
+{ file: "product_images/JutaVit-koffein-100mg_70x-300x300-1-247x296.jpg", name: "Caffeine 100mg (70x)" },
+{ file: "product_images/Q10_100mg_vizold_30x-300x300-1-247x296.jpg", name: "Q10 100mg Water-Soluble (30x)" },
+{ file: "product_images/JutaVit-Folsav-B9_100x-2-300x300-1-247x296.jpg", name: "Folic Acid B9 (100x)" },
+{ file: "product_images/JutaVit_Ascorbic-acid-160g-300x300-1-247x296.jpg", name: "Ascorbic Acid 160g" },
+{ file: "product_images/Jod_200mcg-100x_flakonosUj-300x300-1-247x296.jpg", name: "Iodine 200mcg (100x)" },
+{ file: "product_images/JutaVit-B12_60x-300x300-1-247x296.jpg", name: "Vitamin B12 (60x)" },
+{ file: "product_images/JutaVit-Multivitamin-szirup-UJ-masolata-247x296.jpg", name: "Multivitamin Syrup" },
+{ file: "product_images/JutaVit-Prosta-intense-60x-300x300-1-247x296.jpg", name: "Prosta Intense (60x)" },
+{ file: "product_images/Megnezium_275mg_pezsgotabletta_18xt-247x296.jpg", name: "Magnesium 275mg Effervescent Tablets" },
+{ file: "product_images/Calcium_550mg_pezsgotabletta_18xt-247x296.jpg", name: "Calcium 550mg Effervescent Tablets" },
+{ file: "product_images/JutaSept_Eper_Szeder-300x300-1-247x296.jpg", name: "JutaSept Strawberry Blackberry" },
+{ file: "product_images/JutaVit-Beta-Glucan-70x-1-300x300-1-247x296.jpg", name: "Beta Glucan (70x)" },
+{ file: "product_images/JutaVit-Valeriana-Harmony-Night_70x-300x300-1-247x296.jpg", name: "Valeriana Harmony Night (70x)" },
+{ file: "product_images/JutaVit-Nervaron-300x300-1-247x296.jpg", name: "Nervaron" },
+{ file: "product_images/JutaVit-Porc_Csont-Izom_120x-1-300x300-1-247x296.jpg", name: "Bone Muscle Joint Support (120x)" },
+{ file: "product_images/Fahej_120x_2024_LEFT_HU-247x296.jpg", name: "Cinnamon (120x)" },
+{ file: "product_images/Multivitamin_Immuner_Felnotteknek_100x_HU_LEFT-247x296.jpg", name: "Adult Multivitamin (100x)" },
+{ file: "product_images/Multivitamin_Immuner_Senior_100x_HU_LEFT-247x296.jpg", name: "Senior Multivitamin (100x)" },
+{ file: "product_images/JutaVit-Szerves-Cink_100x-300x300-1-247x296.jpg", name: "Organic Zinc (100x)" },
+{ file: "product_images/JutaVit-Szerves-Krom_100x-300x300-1-247x296.jpg", name: "Organic Chromium (100x)" },
+{ file: "product_images/JutaVit_Szerves-MagneziumB6_70x-1-300x300-1-247x296.jpg", name: "Organic Magnesium + B6 (70x)" },
+{ file: "product_images/JutaVit-Szerves-Szelen_100x-1-300x300-1-247x296.jpg", name: "Organic Selenium (100x)" },
+{ file: "product_images/JutaVit-Magzatvedo-Terhesvitamin-Jod-Nelkul_60x-300x300-1-247x296.jpg", name: "Prenatal Vitamin Without Iodine (60x)" },
+{ file: "product_images/JutaVit_Sylimarin-210_-60x-1-300x300-1-247x296.jpg", name: "Sylimarin 210 (60x)" },
+{ file: "product_images/JutaVit-Grapefruit-mag_-csepp_30ml-1-247x296.jpg", name: "Grapefruit Seed Drops 30ml" },
+{ file: "product_images/JutaVit-C-vitamin-cseppek_30ml-1-300x300-1-247x296.jpg", name: "Vitamin C Drops 30ml" },
+{ file: "product_images/EyeLuteinPlusDuo_90pcs_3D_left-247x296.jpg", name: "Eye Lutein Plus Duo (90pcs)" },
+{ file: "product_images/JutaVit-Tozegafonya-800mg_60x-1-300x300-1-247x296.jpg", name: "Cranberry 800mg (60x)" },
+{ file: "product_images/JutaVit-Mega-halolaj_100x-300x300-1-247x296.jpg", name: "Mega Fish Oil (100x)" },
+{ file: "product_images/JutaVit_Bete-karotin_100x-300x300-1-247x296.jpg", name: "Beta Carotene (100x)" },
+{ file: "product_images/JutaVit-K2D3K1_60x-1-300x300-1-247x296.jpg", name: "K2D3K1 (60x)" },
+{ file: "product_images/JutaVit-Tozegafonya-800mg_100x-300x300-1-247x296.jpg", name: "Cranberry 800mg (100x)" },
+{ file: "product_images/JutaVit-Norveg-lazacolaj_100x-300x300-1-247x296.jpg", name: "Norwegian Salmon Oil (100x)" },
+{ file: "product_images/JutaVit-L-Karnitin-600mg_60x-1-300x300-1-247x296.jpg", name: "L-Carnitine 600mg (60x)" },
+{ file: "product_images/JutaSept_Menthol_eukaliptusz-300x300-1-247x296.jpg", name: "JutaSept Menthol Eucalyptus" },
+{ file: "product_images/JutaSept-Citrom-300x300-1-247x296.jpg", name: "JutaSept Lemon" },
+{ file: "product_images/JutaVit-Hialuron-forte-100mg_30x-300x300-1-247x296.jpg", name: "Hyaluron Forte 100mg (30x)" },
+{ file: "product_images/JutaVit-Kollagen_Komplex_60x-247x296.jpg", name: "Collagen Complex (60x)" },
+{ file: "product_images/JutaVit-MultiGumivitamin_60x-247x296.jpg", name: "Multivitamin Gummies (60x)" },
+{ file: "product_images/JutaVit-Koenzim-Q10-100mg_40x-300x300-1-247x296.jpg", name: "Coenzyme Q10 100mg (40x)" },
+{ file: "product_images/JutaVit-Gumivitamin-D3_60x-2-300x300-1-247x296.jpg", name: "Vitamin D3 Gummies (60x)" },
+{ file: "product_images/JutaVit-Csukamaj-olaj_100x-300x300-1-247x296.jpg", name: "Cod Liver Oil (100x)" },
+{ file: "product_images/JutaVit-Aktiv-szen-tab_30x-300x300-1-247x296.jpg", name: "Activated Charcoal Tablets (30x)" },
+{ file: "product_images/JutaVit-Aktiv-Szen-50x-300x300-1-247x296.jpg", name: "Activated Charcoal (50x)" },
+{ file: "product_images/C_1000_100x_ujEzust_3D-300x300-1-247x296.jpg", name: "Vitamin C 1000mg (100x)" },
+{ file: "product_images/C_500_45x_ujEzust_3D-2048x2048-1-247x296.jpg", name: "Vitamin C 500mg (45x)" },
+{ file: "product_images/C_500_100x_ujEzust_3D-2048x2048-1-247x296.jpg", name: "Vitamin C 500mg (100x)" },
+{ file: "product_images/C-1000mg_Retard_CsD3Cink_45x_Web-300x300-1-247x296.jpg", name: "Vitamin C 1000mg Retard + D3 + Zinc (45x)" },
+{ file: "product_images/MagneziumB6D3_RETARD_50x_web-300x300-1-247x296.jpg", name: "Magnesium B6 D3 Retard (50x)" },
+{ file: "product_images/Glicerin_kup_Gyermek_1500_Web-247x296.jpg", name: "Glycerin Suppository for Children" },
+{ file: "product_images/Glicerin_kup_Felnott_2500_Web-247x296.jpg", name: "Glycerin Suppository for Adults" },
+{ file: "product_images/JutaVit-Magzatvedo-Terhesvitamin-60x-247x296.jpg", name: "Prenatal Vitamin (60x)" },
+{ file: "product_images/JutaVit-Magzatvedo-Terhesvitamin-30x-247x296.jpg", name: "Prenatal Vitamin (30x)" },
+{ file: "product_images/product_images/C_1500_100x_ujEzust_3D-scaled-1-247x296.jpg", name: "Vitamin C 1500mg (100x)" },
+{ file: "product_images/JutaVit-Vas_komplex_forte_40x-300x300-1-247x296.jpg", name: "Iron Complex Forte (40x)" },
+{ file: "product_images/JutaVit-Valeriana-Harmony-45x-300x300-1-247x296.jpg", name: "Valeriana Harmony (45x)" },
+{ file: "product_images/Szelen_webshop-300x300-1-247x296.jpg", name: "Selenium" },
+{ file: "product_images/JutaVit-B1_60x-300x300-1-247x296.jpg", name: "Vitamin B1 (60x)" },
+{ file: "product_images/B-Vitamin_komplex_60x_3D_2024-2048x2048-1-247x296.jpg", name: "B-Vitamin Complex (60x)" },
+{ file: "product_images/Multivitamin_Immuner_gyermekeknek_45x_LEFT_HU-247x296.jpg", name: "Children's Multivitamin (45x)" },
+{ file: "product_images/Multivitamin_Immuner_Senior_45x_HU_LEFT-247x296.jpg", name: "Senior Multivitamin (45x)" },
+{ file: "product_images/Krom_webshop-300x300-1-247x296.jpg", name: "Chromium" },
+  ];
+
+  products.forEach((product) => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.dataset.name = product.name;
+
+    const img = document.createElement("img");
+    img.src = `product_images/${product.file}`;
+    img.alt = product.name;
+
+    const h3 = document.createElement("h3");
+    h3.textContent = product.name;
+
+    const addButton = document.createElement("button");
+    addButton.textContent = "Add to Cart";
+    addButton.className = "add-to-cart";
+
+    addButton.addEventListener("click", () => {
+      const existingItem = cart.find((item) => item.name === product.name);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name: product.name, quantity: 1 });
+      }
+      renderCart();
+      cartDropdown.style.display = "block";
+    });
+
+    card.appendChild(img);
+    card.appendChild(h3);
+    card.appendChild(addButton);
+    productGrid.appendChild(card);
+  });
+
+  document.getElementById("searchInput").addEventListener("input", function() {
+    const searchValue = this.value.toLowerCase();
+    const cards = document.querySelectorAll(".product-card");
+
+    cards.forEach((card) => {
+      const name = card.dataset.name.toLowerCase();
+      card.style.display = name.includes(searchValue) ? "" : "none";
+    });
+  });
+})();
+</script>
+
+-->
+
+</body>
+</html>
+
+<script>
+document.getElementById("searchInput").addEventListener("input", function() {
+  const searchValue = this.value.toLowerCase();
+  const cards = document.querySelectorAll(".product-card");
+
+  cards.forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    card.style.display = name.includes(searchValue) ? "" : "none";
+  });
+});
+</script>
+
+
+
+<footer>
+  <p>Officially backed second-hand distributor | All trademarks, logos and products belong to their respective owners and are used with permission</p>
+  <p>This site is independently operated and is not an official store | For any questions, contact: spookyisbusy@gmail.com</p><br>
+  <p>Website designed and developed by <a href="https://github.com/snifuh" target="_blank">Spooky</a></p>
+</footer>
+    
+</body>
+</html>

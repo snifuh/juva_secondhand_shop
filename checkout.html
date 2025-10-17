@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juva Checkout</title>
+    <link rel="stylesheet" href="juva_secondhand.css">
+</head>
+<body>
+
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+<header>
+  <div class="logo">
+    <img src="jutavit_logo-820x298.png" alt="Brand Logo">
+  </div>
+</header>
+
+<div id="cartDisplay" style="padding: 20px; font-size: 18px;"></div>
+
+
+<script>
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+      header.style.top = '-100px'; 
+    } else {
+      header.style.top = '0';
+    }
+  });
+</script>
+
+<section class="site-info"> 
+  <h2>Checkout</h2>
+  <p>Please fill out the following text boxes to place your order!</p>
+</section>
+
+<section class="cart-summary">
+  <h3>Your Cart:</h3>
+  <div id="cartContents" class="cart-box">
+  </div>
+</section>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cartBox = document.getElementById("cartContents");
+    const cartInput = document.getElementById("cartData");
+
+    const storedCart = localStorage.getItem("cartData");
+
+    if (!storedCart) {
+      cartBox.textContent = "Your cart is empty.";
+      return;
+    }
+
+    const cart = JSON.parse(storedCart);
+
+    if (cart.length === 0) {
+      cartBox.textContent = "Your cart is empty.";
+      return;
+    }
+
+    
+    cartBox.innerHTML = "";
+    const formattedItems = [];
+
+    cart.forEach(item => {
+      const itemDiv = document.createElement("div");
+      itemDiv.textContent = `${item.name} x${item.quantity}`;
+      cartBox.appendChild(itemDiv);
+      formattedItems.push(`${item.name} (x${item.quantity})`);
+    });
+
+    
+    cartInput.value = formattedItems.join("\n");
+  });
+</script>
+
+
+
+<section class="checkout-form">
+  <form action="https://formsubmit.co/bajaimatyas10@gmail.com" method="POST" id="checkoutForm">
+    <input type="hidden" name="_subject" value="New Order from Webshop">
+    <input type="hidden" name="_next" value="thankyou.html">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <input type="hidden" name="Cart Contents" id="cartData">
+
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="Full Name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="Email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="Phone" required>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Street Address</label>
+      <input type="text" id="address" name="Street Address" required>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" id="city" name="City" required>
+    </div>
+
+    <div class="form-group">
+      <label for="postalCode">Postal Code</label>
+      <input type="text" id="postalCode" name="Postal Code" required>
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" id="country" name="Country" required>
+    </div>
+
+    <button type="submit" class="place-order-btn">Place Order!</button>
+  </form>
+</section>
+
+    
+</body>
+</html>
